@@ -25,6 +25,7 @@ namespace Gyartok
         public MainWindow()
         {
             InitializeComponent();
+            LoadData();
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
@@ -40,7 +41,7 @@ namespace Gyartok
 
             conn.Open();
 
-            string sql = "SELECT * FROM gyartok";
+            string sql = "SELECT * FROM `gyartok`";
 
             var cmd = new MySqlCommand(sql, conn);
 
