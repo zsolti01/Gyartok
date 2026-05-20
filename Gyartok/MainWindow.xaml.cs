@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySqlConnector;
 
 namespace Gyartok
 {
@@ -42,13 +43,32 @@ namespace Gyartok
 
             var cmd = new MySqlCommand(sql, conn);
 
-            var adapter = new MySqlAdapter(cmd);
+            var adapter = new MySqlDataAdapter(cmd);
 
-            var dt = new DateTable();
+            var dt = new DataTable();
 
             adapter.Fill(dt);
 
             dataG.ItemsSource = dt.Defaultview;
+
+            conn.Close();
+        }
+
+        private void lgTobb_Click(object sender, RoutedEventArgs e)
+        {
+            var row = dataG.SelectedItem as DataRowView;
+
+            var conn = new MySqlConnection(connectionString);
+
+            conn.Open();
+
+            string sql = "SELECT MAX(leanyvallalatok) FROM gyartok WHERE `leanyvallalatok` = @leanyvallalatok;";
+
+            var cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@leanyvallalatok", row["leanyvallalatok"]);
+
+            MessageBox.Show(cmd.ExecuteScalar().ToString());
 
             conn.Close();
         }
