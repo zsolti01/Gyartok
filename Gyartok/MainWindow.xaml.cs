@@ -29,5 +29,28 @@ namespace Gyartok
         {
             this.Close();
         }
+
+        public string connectionString = "server=localhost;user=root;password=;database=vizsga;";
+
+        public void LoadData()
+        {
+            var conn = new MySqlConnection(connectionString);
+
+            conn.Open();
+
+            string sql = "SELECT * FROM gyartok";
+
+            var cmd = new MySqlCommand(sql, conn);
+
+            var adapter = new MySqlAdapter(cmd);
+
+            var dt = new DateTable();
+
+            adapter.Fill(dt);
+
+            dataG.ItemsSource = dt.Defaultview;
+
+            conn.Close();
+        }
     }
 }
