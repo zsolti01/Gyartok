@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MySqlConnector;
 
 namespace Gyartok
 {
@@ -49,12 +50,27 @@ namespace Gyartok
 
             adapter.Fill(dt);
 
-            dataG.ItemsSource = dt.Defaultview;
+            dataG.ItemsSource = dt.DefaultView;
 
             conn.Close();
         }
 
         private void lgTobb_Click(object sender, RoutedEventArgs e)
+        {
+            var conn = new MySqlConnection(connectionString);
+
+            conn.Open();
+
+            string sql = "SELECT MAX(leanyvallalatok) FROM `gyartok`";
+
+            var cmd = new MySqlCommand(sql, conn);
+
+            MessageBox.Show(cmd.ExecuteScalar().ToString());
+
+            conn.Close();
+        }
+
+        private void dbSzam_Click(object sender, RoutedEventArgs e)
         {
             var row = dataG.SelectedItem as DataRowView;
 
@@ -62,11 +78,11 @@ namespace Gyartok
 
             conn.Open();
 
-            string sql = "SELECT MAX(leanyvallalatok) FROM gyartok WHERE `leanyvallalatok` = @leanyvallalatok;";
+            string sql = "SELECT COUNT(*) FROM `szerszamok` WHERE `kolcsonzes` = @kolcsonzes";
 
             var cmd = new MySqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@leanyvallalatok", row["leanyvallalatok"]);
+            cmd.Parameters.AddWithValue("@kolcsonzes", row["kolcsonzes"]);
 
             MessageBox.Show(cmd.ExecuteScalar().ToString());
 
