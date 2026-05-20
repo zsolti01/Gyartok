@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataG" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="355" RenderTransformOrigin="-3.041,-0.8" BorderThickness="3" Background="#FF6FC3FF" BorderBrush="Black"/>
-        <Button x:Name="dbSzam" Content="Darabszám" HorizontalAlignment="Left" Margin="390,10,0,0" VerticalAlignment="Top" Width="171" Height="57" Background="#FF6FC3FF" BorderBrush="Black" FontSize="26" Foreground="White" FontWeight="Bold" BorderThickness="3"/>
-        <Button x:Name="lgTobb" Content="Legtöbb leányvállalat" HorizontalAlignment="Left" Margin="390,72,0,0" VerticalAlignment="Top" Width="171" Height="57" Background="#FF6FC3FF" BorderBrush="Black" Foreground="White" FontWeight="Bold" FontSize="16" BorderThickness="3"/>
-        <Button x:Name="exit" Content="Kilépés" HorizontalAlignment="Left" Margin="390,353,0,0" VerticalAlignment="Top" Width="171" Height="57" Background="#FFFF3C3C" BorderBrush="Black" Foreground="White" FontWeight="Bold" FontSize="26" BorderThickness="3"/>
+        <DataGrid x:Name="dataG" HorizontalAlignment="Left" Height="380" Margin="10,20,0,0" VerticalAlignment="Top" Width="564" RenderTransformOrigin="-3.041,-0.8" BorderThickness="3" Background="#FF6FC3FF" BorderBrush="Black"/>
+        <Button x:Name="dbSzam" Content="Darabszám" HorizontalAlignment="Left" Margin="603,20,0,0" VerticalAlignment="Top" Width="171" Height="57" Background="#FF6FC3FF" BorderBrush="Black" FontSize="26" Foreground="White" FontWeight="Bold" BorderThickness="3"/>
+        <Button x:Name="lgTobb" Content="Legtöbb leányvállalat" HorizontalAlignment="Left" Margin="603,82,0,0" VerticalAlignment="Top" Width="171" Height="57" Background="#FF6FC3FF" BorderBrush="Black" Foreground="White" FontWeight="Bold" FontSize="16" BorderThickness="3"/>
+        <Button x:Name="exit" Content="Kilépés" HorizontalAlignment="Left" Margin="603,343,0,0" VerticalAlignment="Top" Width="171" Height="57" Background="#FFFF3C3C" BorderBrush="Black" Foreground="White" FontWeight="Bold" FontSize="26" BorderThickness="3" Click="exit_Click"/>
 
     </Grid>
 </Window>
